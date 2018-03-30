@@ -1,0 +1,8 @@
+---
+
+gitlab_skip_sysctl_setup: False
+gitlab_dpkg_unsafe_io: False
+gitlab_config_template: etc/gitlab/gitlab.rb.j2
+
+gitlab_letsencrypt: False
+gitlab_letsencrypt_contacts: []
