@@ -611,10 +611,10 @@ gitlab_rails['gitlab_email_subject_suffix'] = ''
 ##! Docs: https://docs.gitlab.com/omnibus/settings/unicorn.html
 ################################################################################
 
-# unicorn['worker_timeout'] = 60
+unicorn['worker_timeout'] = {{ gitlab_unicorn_worker_timeout }}
 ###! Minimum worker_processes is 2 at this moment
 ###! See https://gitlab.com/gitlab-org/gitlab-ce/issues/18771
-# unicorn['worker_processes'] = 2
+unicorn['worker_processes'] = {{ gitlab_unicorn_worker_processes }}
 
 ### Advanced settings
 # unicorn['listen'] = '127.0.0.1'

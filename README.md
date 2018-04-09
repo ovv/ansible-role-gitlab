@@ -24,6 +24,9 @@ Role Variables
 * gitlab_url: Gitlab access URL.
 * gitlab_config_template: Gitlab configuration template (default to `etc/gitlab/gitlab.rb.j2`).
 
+* gitlab_unicorn_worker_processes: Number of worker process (default to `2`).
+* gitlab_unicorn_worker_timeout: Worker process timeout (default to `60`).
+
 * gitlab_letsencrypt: Setup letsencrypt certificates (default to `False`).
 * gitlab_letsencrypt_contacts: List of contact email for letsencrypt
 
@@ -46,6 +49,7 @@ Example Playbook
     gitlab_url: https://git.example.com
     gitlab_letsencrypt: True
     gitlab_email: gitlab@example.com
+    gitlab_unicorn_worker_processes: 4
 ```
 
 License
