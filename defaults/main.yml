@@ -6,3 +6,6 @@ gitlab_config_template: etc/gitlab/gitlab.rb.j2
 
 gitlab_letsencrypt: False
 gitlab_letsencrypt_contacts: []
+
+gitlab_unicorn_worker_timeout: 60
+gitlab_unicorn_worker_processes: 2
