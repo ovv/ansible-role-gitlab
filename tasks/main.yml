@@ -41,7 +41,7 @@
 - name: Patch install script for sysctl
   replace:
     replace: '    command "cat /etc/sysctl.conf"'
-    regexp: '^    command \"cat /etc/sysctl.conf /etc/sysctl\.d/\*\.conf  | sysctl -e -p -\"$'
+    regexp: '^    command \"cat \/etc\/sysctl.conf \/etc\/sysctl\.d\/\*\.conf  \| sysctl -e -p -\"$'
     path: /opt/gitlab/embedded/cookbooks/package/resources/sysctl.rb
   when: gitlab_skip_sysctl_setup
   notify: Reconfigure gitlab
