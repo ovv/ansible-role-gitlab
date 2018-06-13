@@ -9,3 +9,9 @@ gitlab_letsencrypt_contacts: []
 
 gitlab_unicorn_worker_timeout: 60
 gitlab_unicorn_worker_processes: 2
+
+gitlab_registry:
+  url: False
+  nginx: {}
+
+gitlab_ssl_certificate: False

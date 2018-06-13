@@ -29,12 +29,20 @@ Role Variables
 
 * gitlab_letsencrypt: Setup letsencrypt certificates (default to `False`).
 * gitlab_letsencrypt_contacts: List of contact email for letsencrypt
+* gitlab_ssl_certificate: Custom certificates to be used
+    cert: Certificate fullchain
+    key: Certificate key
 
 * gitlab_email: Send email as.
 * gitlab_noreply_email: Reply-To email adress
 
 * gitlab_skip_sysctl_setup: Skip setting up sysctl values (default to `False`).
 * gitlab_dpkg_unsafe_io: Use `--force-unsafe-io` option for dpkg (default to `False`).
+
+* gitlab_registry: 
+    url: gitlab registry url
+    nginx: Custom value for the registry nginx
+      key: value
 
 Example Playbook
 ----------------

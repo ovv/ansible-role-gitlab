@@ -480,7 +480,7 @@ gitlab_rails['gitlab_email_subject_suffix'] = ''
 ##! Docs: https://docs.gitlab.com/ce/administration/container_registry.html
 ################################################################################
 
-{% if gitlab_registry %}
+{% if gitlab_registry.url | default(False) %}
 registry_external_url '{{ gitlab_registry.url }}'
 {% else %}
 # registry_external_url 'https://registry.gitlab.example.com'
@@ -896,7 +896,7 @@ unicorn['worker_processes'] = {{ gitlab_unicorn_worker_processes }}
 ##! if ssl_verify_client on, verification depth in the client certificates chain
 # nginx['ssl_verify_depth'] = "1"
 
-{% if gitlab_ssl_certificate | default(False) %}
+{% if gitlab_ssl_certificate %}
 nginx['ssl_certificate'] = "{{ gitlab_ssl_certificate.cert }}"
 nginx['ssl_certificate_key'] = "{{ gitlab_ssl_certificate.key }}"
 {% else %}
@@ -1363,11 +1363,9 @@ nginx['ssl_certificate_key'] = "{{ gitlab_ssl_certificate.key }}"
 #  "X-Forwarded-Ssl" => "on"
 # }
 
-{% if gitlab_registry.nginx | default(False) %}
 {% for key, value in gitlab_registry.nginx.items() %}
 registry_nginx['{{ key }}'] = "{{ value }}"
 {% endfor %}
-{% endif %}
 
 ################################################################################
 ## Prometheus
