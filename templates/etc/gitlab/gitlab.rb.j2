@@ -480,7 +480,11 @@ gitlab_rails['gitlab_email_subject_suffix'] = ''
 ##! Docs: https://docs.gitlab.com/ce/administration/container_registry.html
 ################################################################################
 
+{% if gitlab_registry.url | default(False) %}
+registry_external_url '{{ gitlab_registry.url }}'
+{% else %}
 # registry_external_url 'https://registry.gitlab.example.com'
+{% endif %}
 
 ### Settings used by GitLab application
 # gitlab_rails['registry_enabled'] = true
@@ -892,8 +896,13 @@ unicorn['worker_processes'] = {{ gitlab_unicorn_worker_processes }}
 ##! if ssl_verify_client on, verification depth in the client certificates chain
 # nginx['ssl_verify_depth'] = "1"
 
+{% if gitlab_ssl_certificate %}
+nginx['ssl_certificate'] = "{{ gitlab_ssl_certificate.cert }}"
+nginx['ssl_certificate_key'] = "{{ gitlab_ssl_certificate.key }}"
+{% else %}
 # nginx['ssl_certificate'] = "/etc/gitlab/ssl/#{node['fqdn']}.crt"
 # nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/#{node['fqdn']}.key"
+{% endif %}
 # nginx['ssl_ciphers'] = "ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256"
 # nginx['ssl_prefer_server_ciphers'] = "on"
 
@@ -1353,6 +1362,10 @@ unicorn['worker_processes'] = {{ gitlab_unicorn_worker_processes }}
 #  "X-Forwarded-Proto" => "https",
 #  "X-Forwarded-Ssl" => "on"
 # }
+
+{% for key, value in gitlab_registry.nginx.items() %}
+registry_nginx['{{ key }}'] = "{{ value }}"
+{% endfor %}
 
 ################################################################################
 ## Prometheus
