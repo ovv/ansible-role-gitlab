@@ -2,15 +2,14 @@
 
 - name: Install requirements
   apt:
-    pkg: "{{ item }}"
+    pkg:
+      - curl
+      - gnupg
+      - debian-archive-keyring
+      - apt-transport-https
+      - openssh-server
+      - ca-certificates
     state: latest
-  with_items:
-    - curl
-    - gnupg
-    - debian-archive-keyring
-    - apt-transport-https
-    - openssh-server
-    - ca-certificates
 
 - name: Gitlab apt key
   apt_key:
