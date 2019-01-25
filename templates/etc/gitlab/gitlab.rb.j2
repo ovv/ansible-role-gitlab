@@ -1171,7 +1171,7 @@ nginx['ssl_certificate_key'] = "{{ gitlab_ssl_certificate.key }}"
 
 ##! Define to enable GitLab Pages
 {% if gitlab_pages.url | default(False) %}
-registry_external_url '{{ gitlab_pages.url }}'
+pages_external_url '{{ gitlab_pages.url }}'
 {% else %}
 # pages_external_url "http://pages.example.com/"
 {% endif %}
@@ -1248,7 +1248,7 @@ registry_external_url '{{ gitlab_pages.url }}'
 # pages_nginx['enable'] = false
 
 {% for key, value in gitlab_pages.nginx.items() %}
-registry_nginx['{{ key }}'] = "{{ value }}"
+pages_nginx['{{ key }}'] = "{{ value }}"
 {% endfor %}
 
 # gitlab_rails['pages_path'] = "/var/opt/gitlab/gitlab-rails/shared/pages"
