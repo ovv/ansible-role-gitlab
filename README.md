@@ -49,6 +49,16 @@ Role Variables
     nginx: Custom value for the pages nginx
       key: value
 
+* gitlab_smtp:
+    address: SMTP server address
+    port: SMTP server port
+    user: username
+    password: password
+    domain: domain
+    auth: SMTP authentification type
+    starttls: Enable starttls (default to `true`)
+    tls: Enable tls (default to `false`)
+
 Example Playbook
 ----------------
 
