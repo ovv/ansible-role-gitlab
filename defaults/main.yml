@@ -15,3 +15,7 @@ gitlab_registry:
   nginx: {}
 
 gitlab_ssl_certificate: False
+
+gitlab_pages:
+  url: False
+  nginx: {}

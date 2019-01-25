@@ -44,6 +44,11 @@ Role Variables
     nginx: Custom value for the registry nginx
       key: value
 
+* gitlab_pages: 
+    url: gitlab pages url
+    nginx: Custom value for the pages nginx
+      key: value
+
 Example Playbook
 ----------------
 
