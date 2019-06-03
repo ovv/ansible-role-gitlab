@@ -42,14 +42,14 @@
     replace: '    command "cat /etc/sysctl.conf"'
     regexp: '^    command \"cat \/etc\/sysctl.conf \/etc\/sysctl\.d\/\*\.conf  \| sysctl -e -p -\"$'
     path: /opt/gitlab/embedded/cookbooks/package/resources/sysctl.rb
-  when: gitlab_skip_sysctl_setup
+  when: gitlab_skip_sysctl_setup | bool
   notify: Reconfigure gitlab
 
 - name: Letsencrypt cron
   cron:
     name: auto renew letsencrypt certificates
-    minute: 1
-    hour: 23
-    weekday: 0
+    minute: "1"
+    hour: "23"
+    weekday: "0"
     job: '/usr/bin/gitlab-ctl renew-le-certs'
-  when: gitlab_letsencrypt
+  when: gitlab_letsencrypt | bool
