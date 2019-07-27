@@ -19,3 +19,5 @@ gitlab_ssl_certificate: False
 gitlab_pages:
   url: False
   nginx: {}
+
+gitlab_http2_enabled: true
