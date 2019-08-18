@@ -9,7 +9,7 @@
       - apt-transport-https
       - openssh-server
       - ca-certificates
-    state: latest
+    state: present
 
 - name: Gitlab apt key
   apt_key:
@@ -25,7 +25,7 @@
   no_log: "{{ gitlab_skip_sysctl_setup }}"
   apt:
     pkg: gitlab-ce
-    state: latest
+    state: present
     dpkg_options: "{{ 'force-unsafe-io' if gitlab_dpkg_unsafe_io else omit }}"
   environment:
     EXTERNAL_URL: "{{ gitlab_url }}"
