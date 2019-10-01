@@ -2032,3 +2032,7 @@ letsencrypt['contact_emails'] = {{ gitlab_letsencrypt_contacts }} # This should 
 #     handler: 'failover_pgbouncer'
 #   }
 # }
+
+{% if gitlab_disable_ulimit %}
+gitaly['open_files_ulimit'] = false
+{% endif %}

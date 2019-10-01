@@ -21,3 +21,5 @@ gitlab_pages:
   nginx: {}
 
 gitlab_http2_enabled: true
+
+gitlab_disable_ulimit: false
